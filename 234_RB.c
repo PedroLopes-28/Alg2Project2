@@ -3,17 +3,17 @@
 #include <stdlib.h>
 
 
-struct RB{
+typedef struct RB{
     noRB* sentinela;
 
     int alturaPreto;
-};
-struct NO{
+}rb;
+typedef struct NO{
     int chave, alturaPreto;
     char cor;
 
     noRB *esq, *dir, *pai;
-};
+} noRB;
 
 rb *alocaArvore(){
     rb* novaArvore = (rb*) malloc(sizeof(rb));
@@ -368,21 +368,21 @@ void atualiza_Altura_Preto_RB(rb *arv){
 
 // ===== ESTRUTURAS INTERNAS =====
 
-struct NO234 {
+typedef struct NO234 {
     int nChaves;
     int chaves[3];
     no234* filhos[4];
     int folha;
-};
+}no234;
 
-struct arvore234 {
+typedef struct arvore234 {
     no234* raiz;
     int altura;
     int splits;
     int rotacoes;
     int comparacoes;
     int merges;
-};
+}arv234;
 
 
 
