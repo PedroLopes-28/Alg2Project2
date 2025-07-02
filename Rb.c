@@ -66,86 +66,58 @@ void insereNo(rb *arv, noRB *novoNo) {
 
 
 
-//Remove um no da arvore rb
 int removeNo(rb *arv, int valor){
     noRB *noRemover = arv->sentinela->dir;
-
     while(noRemover && noRemover->chave != valor){
         if(valor < noRemover->chave)
             noRemover = noRemover->esq;
         else
             noRemover = noRemover->dir;
     }
-
-    if(noRemover == NULL) return 0; // Elemento não encontrado
-
+    if(!noRemover) return 0;
     noRB *y = noRemover;
     char corOriginal = y->cor;
     noRB *x, *xPai;
-
     if(noRemover->esq == NULL){
         x = noRemover->dir;
         xPai = noRemover->pai;
-
-        if(noRemover == noRemover->pai->esq)
-            noRemover->pai->esq = x;
-        else
-            noRemover->pai->dir = x;
-
-        if(x)
-            x->pai = noRemover->pai;
-
+        if(noRemover == xPai->esq) xPai->esq = x;
+        else                       xPai->dir = x;
+        if(x) x->pai = xPai;
     } else if(noRemover->dir == NULL){
         x = noRemover->esq;
         xPai = noRemover->pai;
-
-        if(noRemover == noRemover->pai->esq)
-            noRemover->pai->esq = x;
-        else
-            noRemover->pai->dir = x;
-
-        if(x)
-            x->pai = noRemover->pai;
-
+        if(noRemover == xPai->esq) xPai->esq = x;
+        else                       xPai->dir = x;
+        if(x) x->pai = xPai;
     } else {
-        y = noRemover->dir;
-        while(y->esq)
-            y = y->esq;
-
+        y = noRemover->esq;
+        while(y->dir) y = y->dir;
         corOriginal = y->cor;
-        x = y->dir;
+        x    = y->esq;
         xPai = y->pai;
-
         if(y->pai != noRemover){
-            if(x)
-                x->pai = y->pai;
-            y->pai->esq = x;
-
-            y->dir = noRemover->dir;
-            if(y->dir)
-                y->dir->pai = y;
+            if(x) x->pai = y->pai;
+            y->pai->dir = x;
+            y->esq = noRemover->esq;
+            y->esq->pai = y;
         }
-
         if(noRemover->pai->esq == noRemover)
             noRemover->pai->esq = y;
         else
             noRemover->pai->dir = y;
-
         y->pai = noRemover->pai;
-        y->esq = noRemover->esq;
-        if(y->esq)
-            y->esq->pai = y;
-
+        y->dir = noRemover->dir;
+        if(y->dir) y->dir->pai = y;
         y->cor = noRemover->cor;
     }
-
     if(corOriginal == 'P')
         balanceamentoRemocao(arv, x, xPai);
-
     free(noRemover);
     atualiza_Altura_Preto_RB(arv);
     return 1;
 }
+
 
 //Retorna a raiz da arvore
 noRB *retornaRaiz(rb *arv){
