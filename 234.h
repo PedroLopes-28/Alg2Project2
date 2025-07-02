@@ -24,7 +24,6 @@ typedef struct arv234{
     int    splits;    // contagem de splits realizados
     int    merges;    // contagem de merges realizados
     int    rotacoes;  // contagem de empréstimos (rotacoes conceitualmente)
-    int    comparacoes;
 }arv234;
 
 

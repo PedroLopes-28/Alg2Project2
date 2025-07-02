@@ -15,7 +15,6 @@ arv234* criaArvore234() {
     arv->splits = 0;
     arv->merges=0;
     arv->rotacoes=0;
-    arv->comparacoes = 0;
     return arv;
 }
 

@@ -97,7 +97,7 @@ void menu234(arv234* arv) {
                 scanf("%d", &valor);
                 insere234(arv, valor);
                 printf("\n");
-                printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nComparacoes: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes, arv->comparacoes);
+            printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nBlocos: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes,contaBlocosOcupados(arv->raiz));
                 printf("\n");
                 break;
             case 2:
@@ -112,7 +112,7 @@ void menu234(arv234* arv) {
                     printf("Esse Elemento Não Existe!\n");
                 }
                 printf("\n");
-                printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nComparacoes: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes, arv->comparacoes);
+            printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nBlocos: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes,contaBlocosOcupados(arv->raiz));
                 printf("\n");
                 break;
             case 3:
@@ -121,7 +121,7 @@ void menu234(arv234* arv) {
                 printf("\n");
                 printf("\n");
                 altura234(retornaRaiz234(arv));
-                printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nComparacoes: %d\nBlocos: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes, arv->comparacoes,contaBlocosOcupados(arv->raiz));
+                printf("Altura: %d\nSplits: %d\nMerges: %d\nRotacoes: %d\nBlocos: %d", arv->altura, arv->splits, arv->merges, arv->rotacoes,contaBlocosOcupados(arv->raiz));
                 printf("\n");
                 break;
             case 4:
